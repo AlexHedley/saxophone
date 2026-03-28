@@ -124,7 +124,6 @@
                '" fill="' + COLOR.bg + '" rx="10"/>');
 
     // Section labels
-    parts.push(textEl(90, 22, "LEFT HAND", 10, false, "middle"));
     parts.push(
       '<text x="90" y="22" text-anchor="middle"' +
       ' font-family="Arial,Helvetica,sans-serif" font-size="10"' +
