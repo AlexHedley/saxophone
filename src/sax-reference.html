@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Parts of an Alto Saxophone and Complete Fingering Chart Reference" />
+    <meta name="keywords" content="Saxophone, Fingering Chart, Alto Saxophone, Parts, Music" />
+    <meta name="author" content="Alex Hedley" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/vendor/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/vendor/bootstrap/sticky-footer.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <title>Alto Saxophone Reference</title>
+    <style>
+      /* ── Reference grid ─────────────────────────────────── */
+      .ref-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+        gap: 12px;
+      }
+
+      .ref-card {
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 10px 8px 8px;
+        text-align: center;
+      }
+
+      .ref-note-name {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1a252f;
+        margin-bottom: 2px;
+      }
+
+      .ref-concert {
+        font-size: 0.7rem;
+        color: #6c757d;
+        margin-bottom: 6px;
+      }
+
+      .ref-card svg {
+        max-width: 100%;
+      }
+
+      .mini-notation {
+        min-height: 72px;
+        overflow: hidden;
+      }
+
+      .mini-notation svg {
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* ── Nav tab links ──────────────────────────────────── */
+      .nav-tabs .nav-link {
+        cursor: pointer;
+        color: #1a252f;
+      }
+
+      .nav-tabs .nav-link.active {
+        font-weight: 600;
+        color: #1a252f;
+      }
+
+      /* ── Parts SVG wrapper ──────────────────────────────── */
+      .sax-parts-wrap {
+        overflow-x: auto;
+        text-align: center;
+      }
+
+      .sax-parts-wrap svg {
+        max-width: 100%;
+        height: auto;
+      }
+
+      @media (max-width: 575px) {
+        .ref-grid {
+          grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        }
+      }
+    </style>
+  </head>
+
+  <body ng-app="refApp">
+    <!-- ── Navbar ──────────────────────────────────────────── -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container">
+        <span class="navbar-brand">🎷 Alto Saxophone</span>
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link text-white" href="index.html">Interactive Chart</a>
+          <a class="nav-link text-white active" href="sax-reference.html">Reference</a>
+        </div>
+      </div>
+    </nav>
+
+    <main role="main" class="container py-4" ng-controller="refController">
+
+      <header class="mb-3">
+        <h1>Parts of an Alto Saxophone &amp; Fingering Chart</h1>
+        <p class="text-muted mb-0">Anatomy diagram and complete fingering reference for Alto Saxophone</p>
+      </header>
+
+      <!-- ── Tab navigation ───────────────────────────────── -->
+      <ul class="nav nav-tabs mb-4" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" role="tab"
+             ng-class="{ active: activeTab === 'parts' }"
+             ng-click="showTab('parts')" href="">Parts of the Saxophone</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" role="tab"
+             ng-class="{ active: activeTab === 'chart' }"
+             ng-click="showTab('chart')" href="">Fingering Chart</a>
+        </li>
+      </ul>
+
+      <!-- ╔══════════════════════════════════════════════════╗
+           ║  PARTS TAB                                       ║
+           ╚══════════════════════════════════════════════════╝ -->
+      <div ng-show="activeTab === 'parts'">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-11 col-lg-9">
+            <div class="detail-card p-3 p-md-4">
+              <h5 class="mb-1">Parts of the Alto Saxophone</h5>
+              <p class="text-muted small mb-3">
+                The alto saxophone is an Eb-pitched woodwind instrument with a
+                conical brass body, single-reed mouthpiece, and keywork covering
+                the tone holes.
+              </p>
+              <div class="sax-parts-wrap">
+
+                <!-- ═══════════════════════════════════════════════════════
+                     Inline SVG — Alto Saxophone Anatomy Diagram
+                     Canvas: 540 × 700  |  All coords in SVG user units
+                     ═══════════════════════════════════════════════════════ -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 540 700"
+                     width="540" height="700"
+                     role="img"
+                     aria-label="Annotated diagram of the parts of an alto saxophone"
+                     style="font-family:Arial,Helvetica,sans-serif;">
+
+                  <!-- Background -->
+                  <rect width="540" height="700" fill="#f8f9fa" rx="12"/>
+
+                  <!-- ─── INSTRUMENT BODY ─────────────────────────────── -->
+
+                  <!-- Neck tube (thick curved stroke = tube) -->
+                  <!-- Shadow / border stroke -->
+                  <path d="M 245,142 C 222,118 192,96 165,79"
+                        fill="none" stroke="#8B6914" stroke-width="30"
+                        stroke-linecap="round" opacity="0.45"/>
+                  <!-- Main neck fill -->
+                  <path d="M 245,142 C 222,118 192,96 165,79"
+                        fill="none" stroke="#D4A853" stroke-width="24"
+                        stroke-linecap="round"/>
+
+                  <!-- Body tube (main vertical section) -->
+                  <rect x="222" y="132" width="54" height="370"
+                        rx="10" fill="#D4A853" stroke="#8B6914" stroke-width="2.5"/>
+
+                  <!-- Bell bow (curved U at bottom of body) -->
+                  <path d="M 222,498 Q 190,536 249,558 Q 308,536 276,498"
+                        fill="#D4A853" stroke="#8B6914" stroke-width="2.5"/>
+
+                  <!-- Bell (flared section, below the bow) -->
+                  <path d="M 219,550 Q 194,592 193,632 Q 249,660 305,632 Q 304,592 279,550"
+                        fill="#D4A853" stroke="#8B6914" stroke-width="2.5"/>
+
+                  <!-- Bell lip / opening ring -->
+                  <ellipse cx="249" cy="644" rx="54" ry="18"
+                           fill="#C09040" stroke="#8B6914" stroke-width="2.5"/>
+
+                  <!-- Bell guard cross-brace (decorative) -->
+                  <line x1="197" y1="648" x2="301" y2="648"
+                        stroke="#8B6914" stroke-width="3" stroke-linecap="round"/>
+
+                  <!-- ─── MOUTHPIECE + ACCESSORIES ───────────────────── -->
+
+                  <!-- Mouthpiece body -->
+                  <rect x="130" y="58" width="40" height="14" rx="7"
+                        fill="#2c3e50" stroke="#1a252f" stroke-width="2"
+                        transform="rotate(-18, 150, 65)"/>
+
+                  <!-- Ligature (metal ring clamping reed to mouthpiece) -->
+                  <rect x="133" y="54" width="28" height="18" rx="8"
+                        fill="none" stroke="#A0A0A0" stroke-width="3.5"
+                        transform="rotate(-18, 147, 63)"/>
+
+                  <!-- Reed (thin strip under ligature, lighter color) -->
+                  <rect x="148" y="66" width="3" height="10" rx="1"
+                        fill="#DEB887" stroke="#8B7355" stroke-width="1"
+                        transform="rotate(-18, 149, 71)"/>
+
+                  <!-- ─── OCTAVE KEY (on neck) ────────────────────────── -->
+                  <circle cx="196" cy="106" r="8"
+                          fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2"/>
+
+                  <!-- ─── LEFT-HAND KEYS ─────────────────────────────── -->
+
+                  <!-- LH 1 (index) -->
+                  <circle cx="249" cy="198" r="18"
+                          fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2.5"/>
+                  <text x="249" y="203" text-anchor="middle" font-size="11"
+                        font-weight="bold" fill="#2c3e50">1</text>
+
+                  <!-- Bis key (small, between LH1 and LH2) -->
+                  <circle cx="281" cy="222" r="9"
+                          fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2"/>
+
+                  <!-- LH 2 (middle) -->
+                  <circle cx="249" cy="252" r="18"
+                          fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2.5"/>
+                  <text x="249" y="257" text-anchor="middle" font-size="11"
+                        font-weight="bold" fill="#2c3e50">2</text>
+
+                  <!-- LH 3 (ring) -->
+                  <circle cx="249" cy="306" r="18"
+                          fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2.5"/>
+                  <text x="249" y="311" text-anchor="middle" font-size="11"
+                        font-weight="bold" fill="#2c3e50">3</text>
+
+                  <!-- G# / Ab key (small, right side of body near LH3) -->
+                  <circle cx="281" cy="291" r="10"
+                          fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2"/>
+
+                  <!-- Left pinky keys (row of 4 rectangles) -->
+                  <rect x="200" y="332" width="20" height="26" rx="4"
+                        fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2"/>
+                  <rect x="223" y="332" width="20" height="26" rx="4"
+                        fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2"/>
+                  <rect x="246" y="332" width="20" height="26" rx="4"
+                        fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2"/>
+                  <rect x="269" y="332" width="20" height="26" rx="4"
+                        fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2"/>
+
+                  <!-- LH / RH separator dashes on body -->
+                  <line x1="224" y1="366" x2="276" y2="366"
+                        stroke="#8B6914" stroke-width="1.5"
+                        stroke-dasharray="5,3"/>
+
+                  <!-- ─── RIGHT-HAND KEYS ────────────────────────────── -->
+
+                  <!-- RH 1 (index) -->
+                  <circle cx="249" cy="382" r="18"
+                          fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2.5"/>
+                  <text x="249" y="387" text-anchor="middle" font-size="11"
+                        font-weight="bold" fill="#2c3e50">1</text>
+
+                  <!-- RH 2 (middle) -->
+                  <circle cx="249" cy="436" r="18"
+                          fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2.5"/>
+                  <text x="249" y="441" text-anchor="middle" font-size="11"
+                        font-weight="bold" fill="#2c3e50">2</text>
+
+                  <!-- Side C key (small, right of RH2) -->
+                  <circle cx="281" cy="424" r="10"
+                          fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2"/>
+
+                  <!-- RH 3 (ring) -->
+                  <circle cx="249" cy="490" r="18"
+                          fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2.5"/>
+                  <text x="249" y="495" text-anchor="middle" font-size="11"
+                        font-weight="bold" fill="#2c3e50">3</text>
+
+                  <!-- Right pinky keys (row of 3 rectangles) -->
+                  <rect x="211" y="513" width="20" height="26" rx="4"
+                        fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2"/>
+                  <rect x="235" y="513" width="20" height="26" rx="4"
+                        fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2"/>
+                  <rect x="259" y="513" width="20" height="26" rx="4"
+                        fill="#A8A8A8" stroke="#5c5c5c" stroke-width="2"/>
+
+                  <!-- ─── CALLOUT LINES + LABELS ─────────────────────── -->
+                  <!-- LEFT SIDE — text anchored right (text x=148, line endpoint x=149) -->
+                  <!-- Callout line style: stroke="#adb5bd" stroke-width="1.2" -->
+
+                  <!-- Mouthpiece -->
+                  <line x1="130" y1="63" x2="90" y2="52"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="87" y="53" text-anchor="end"
+                        font-size="11.5" fill="#1a252f" font-weight="500">Mouthpiece</text>
+
+                  <!-- Ligature -->
+                  <line x1="134" y1="60" x2="90" y2="68"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="87" y="69" text-anchor="end"
+                        font-size="11.5" fill="#1a252f" font-weight="500">Ligature</text>
+
+                  <!-- Reed -->
+                  <line x1="145" y1="72" x2="90" y2="84"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="87" y="85" text-anchor="end"
+                        font-size="11.5" fill="#1a252f" font-weight="500">Reed</text>
+
+                  <!-- Neck (Crook) -->
+                  <line x1="178" y1="88" x2="90" y2="112"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="87" y="113" text-anchor="end"
+                        font-size="11.5" fill="#1a252f" font-weight="500">Neck (Crook)</text>
+
+                  <!-- Octave Key -->
+                  <line x1="188" y1="106" x2="90" y2="136"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="87" y="137" text-anchor="end"
+                        font-size="11.5" fill="#1a252f" font-weight="500">Octave Key</text>
+
+                  <!-- LH Key 1 -->
+                  <line x1="231" y1="198" x2="90" y2="198"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="87" y="199" text-anchor="end"
+                        font-size="11.5" fill="#1a252f" font-weight="500">LH Key 1</text>
+
+                  <!-- LH Key 2 -->
+                  <line x1="231" y1="252" x2="90" y2="252"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="87" y="253" text-anchor="end"
+                        font-size="11.5" fill="#1a252f" font-weight="500">LH Key 2</text>
+
+                  <!-- LH Key 3 -->
+                  <line x1="231" y1="306" x2="90" y2="306"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="87" y="307" text-anchor="end"
+                        font-size="11.5" fill="#1a252f" font-weight="500">LH Key 3</text>
+
+                  <!-- Left Pinky Keys -->
+                  <line x1="200" y1="345" x2="90" y2="345"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="87" y="346" text-anchor="end"
+                        font-size="11.5" fill="#1a252f" font-weight="500">Left Pinky Keys</text>
+                  <!-- small sub-label -->
+                  <text x="87" y="358" text-anchor="end"
+                        font-size="9.5" fill="#6c757d">(E&#9837; · C · B · B&#9837;)</text>
+
+                  <!-- RIGHT SIDE — text anchored left (text x=362) -->
+
+                  <!-- Body -->
+                  <line x1="276" y1="168" x2="358" y2="168"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="361" y="169" text-anchor="start"
+                        font-size="11.5" fill="#1a252f" font-weight="500">Body</text>
+
+                  <!-- Bis Key -->
+                  <line x1="290" y1="222" x2="358" y2="222"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="361" y="223" text-anchor="start"
+                        font-size="11.5" fill="#1a252f" font-weight="500">Bis Key</text>
+
+                  <!-- G# / Ab Key -->
+                  <line x1="291" y1="291" x2="358" y2="291"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="361" y="292" text-anchor="start"
+                        font-size="11.5" fill="#1a252f" font-weight="500">G&#9839; / Ab Key</text>
+
+                  <!-- RH Key 1 -->
+                  <line x1="267" y1="382" x2="358" y2="382"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="361" y="383" text-anchor="start"
+                        font-size="11.5" fill="#1a252f" font-weight="500">RH Key 1</text>
+
+                  <!-- RH Key 2 -->
+                  <line x1="267" y1="436" x2="358" y2="436"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="361" y="437" text-anchor="start"
+                        font-size="11.5" fill="#1a252f" font-weight="500">RH Key 2</text>
+
+                  <!-- Side C Key -->
+                  <line x1="291" y1="424" x2="358" y2="456"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="361" y="457" text-anchor="start"
+                        font-size="11.5" fill="#1a252f" font-weight="500">Side C Key</text>
+
+                  <!-- RH Key 3 -->
+                  <line x1="267" y1="490" x2="358" y2="490"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="361" y="491" text-anchor="start"
+                        font-size="11.5" fill="#1a252f" font-weight="500">RH Key 3</text>
+
+                  <!-- Right Pinky Keys -->
+                  <line x1="279" y1="525" x2="358" y2="525"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="361" y="526" text-anchor="start"
+                        font-size="11.5" fill="#1a252f" font-weight="500">Right Pinky Keys</text>
+                  <text x="361" y="538" text-anchor="start"
+                        font-size="9.5" fill="#6c757d">(B&#9837; · C · E&#9837;)</text>
+
+                  <!-- Bell Bow -->
+                  <line x1="280" y1="540" x2="358" y2="562"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="361" y="563" text-anchor="start"
+                        font-size="11.5" fill="#1a252f" font-weight="500">Bell Bow</text>
+
+                  <!-- Bell -->
+                  <line x1="299" y1="625" x2="358" y2="618"
+                        stroke="#adb5bd" stroke-width="1.2"/>
+                  <text x="361" y="619" text-anchor="start"
+                        font-size="11.5" fill="#1a252f" font-weight="500">Bell</text>
+
+                  <!-- ─── KEY TYPE LEGEND ────────────────────────────── -->
+                  <rect x="165" y="668" width="210" height="26" rx="6"
+                        fill="#ffffff" stroke="#dee2e6" stroke-width="1.5"/>
+                  <circle cx="186" cy="681" r="8"
+                          fill="#A8A8A8" stroke="#5c5c5c" stroke-width="1.5"/>
+                  <text x="198" y="685" font-size="10" fill="#495057">Tone-hole key (cup/pad)</text>
+                  <rect x="310" y="675" width="14" height="12" rx="3"
+                        fill="#A8A8A8" stroke="#5c5c5c" stroke-width="1.5"/>
+                  <text x="328" y="685" font-size="10" fill="#495057">Pinky key</text>
+
+                </svg><!-- end anatomy SVG -->
+
+              </div><!-- .sax-parts-wrap -->
+            </div><!-- .detail-card -->
+          </div>
+        </div>
+      </div><!-- end parts tab -->
+
+      <!-- ╔══════════════════════════════════════════════════╗
+           ║  FINGERING CHART TAB                            ║
+           ╚══════════════════════════════════════════════════╝ -->
+      <div ng-show="activeTab === 'chart'">
+
+        <p class="text-muted small mb-4">
+          Written pitches shown. Alto saxophone is an E&#9837; instrument &mdash;
+          written pitch sounds a major 6th lower in concert pitch.
+          Press keys shown filled (dark). Open keys shown white.
+        </p>
+
+        <!-- Loading state -->
+        <div ng-if="notes.length === 0" class="text-muted text-center py-5">
+          Loading fingering data&hellip;
+        </div>
+
+        <!-- Register 1 -->
+        <div ng-if="notes.length > 0">
+          <div class="register-label mb-2">Register 1 &mdash; Lower Range (No Octave Key)</div>
+          <div class="ref-grid mb-4">
+            <div class="ref-card" ng-repeat="note in register1" id="card-{{note.id}}">
+              <div class="ref-note-name">{{note.written}}</div>
+              <div class="ref-concert">Concert: {{note.concertPitch}}</div>
+              <div ng-bind-html="note.fingeringSvg"></div>
+              <div class="mini-notation" id="mini-notation-{{note.id}}"></div>
+            </div>
+          </div>
+
+          <!-- Register 2 -->
+          <div class="register-label mb-2">Register 2 &mdash; Upper Range (Octave Key)</div>
+          <div class="ref-grid">
+            <div class="ref-card" ng-repeat="note in register2" id="card-{{note.id}}">
+              <div class="ref-note-name">{{note.written}}</div>
+              <div class="ref-concert">Concert: {{note.concertPitch}}</div>
+              <div ng-bind-html="note.fingeringSvg"></div>
+              <div class="mini-notation" id="mini-notation-{{note.id}}"></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end chart tab -->
+
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">
+          <a href="https://www.alexhedley.com/" target="_blank">Alex Hedley</a>.
+        </span>
+      </div>
+    </footer>
+
+    <script src="js/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="js/vendor/jquery/jquery-slim.min.js"><\/script>'
+        );
+    </script>
+    <script src="js/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="js/vendor/angularjs/angular.min.js"></script>
+
+    <!-- VexFlow -->
+    <script src="js/vendor/vexflow/vexflow-min.js"></script>
+
+    <!-- Shared fingering-chart SVG generator -->
+    <script src="js/fingering-chart.js"></script>
+
+    <script>
+      /* ================================================================
+         Reference page — AngularJS app
+         ================================================================ */
+      var refApp = angular.module("refApp", []);
+
+      refApp.controller("refController", function ($scope, $http, $sce, $timeout) {
+        $scope.activeTab = "parts";
+        $scope.notes     = [];
+        $scope.register1 = [];
+        $scope.register2 = [];
+        $scope._chartRendered = false;
+
+        /* ── Tab switching ──────────────────────────────────── */
+        $scope.showTab = function (tab) {
+          $scope.activeTab = tab;
+          if (tab === "chart" && !$scope._chartRendered && $scope.notes.length > 0) {
+            $timeout(function () {
+              $scope.notes.forEach(renderMiniNotation);
+              $scope._chartRendered = true;
+            }, 80);
+          }
+        };
+
+        /* ── Load fingering data ────────────────────────────── */
+        $http.get("data/fingerings.json").then(
+          function (response) {
+            var notes = response.data.notes;
+
+            // Pre-compute compact (90px-wide) fingering SVGs for all notes
+            notes.forEach(function (note) {
+              note.fingeringSvg = $sce.trustAsHtml(
+                FingeringChart.generateSVG(note.keys, 90)
+              );
+            });
+
+            $scope.notes     = notes;
+            $scope.register1 = notes.filter(function (n) { return n.register === 1; });
+            $scope.register2 = notes.filter(function (n) { return n.register === 2; });
+          },
+          function () {
+            console.error("Could not load data/fingerings.json");
+          }
+        );
+      });
+
+      /* ================================================================
+         Mini VexFlow notation renderer (one per grid card)
+         ================================================================ */
+      function renderMiniNotation(note) {
+        var container = document.getElementById("mini-notation-" + note.id);
+        if (!container) { return; }
+        container.innerHTML = "";
+
+        try {
+          var VF = Vex.Flow;
+          var renderer = new VF.Renderer(container, VF.Renderer.Backends.SVG);
+          renderer.resize(140, 80);
+          var context = renderer.getContext();
+
+          var stave = new VF.Stave(4, 4, 122);
+          stave.addClef("treble");
+          stave.setContext(context).draw();
+
+          // Parse vexNote  e.g. "Bb3/w"
+          var parts   = note.vexNote.split("/");
+          var noteStr = parts[0];
+          var dur     = parts[1] || "w";
+
+          var match = noteStr.match(/^([A-Ga-g])(#{1,2}|b{1,2}|n)?(\d)$/);
+          if (!match) { return; }
+
+          var pitch  = match[1].toLowerCase();
+          var acc    = match[2] || "";
+          var octave = match[3];
+          var vfKey  = pitch + acc + "/" + octave;
+
+          var staveNote = new VF.StaveNote({
+            clef: "treble",
+            keys: [vfKey],
+            duration: dur
+          });
+
+          if (acc === "b" || acc === "bb") {
+            staveNote.addAccidental(0, new VF.Accidental("b"));
+          } else if (acc === "#" || acc === "##") {
+            staveNote.addAccidental(0, new VF.Accidental("#"));
+          }
+
+          var voice = new VF.Voice({ num_beats: 4, beat_value: 4 });
+          voice.addTickables([staveNote]);
+          new VF.Formatter().joinVoices([voice]).format([voice], 90);
+          voice.draw(context, stave);
+
+        } catch (e) {
+          console.error("VexFlow mini error for", note.id, e);
+        }
+      }
+    </script>
+  </body>
+</html>

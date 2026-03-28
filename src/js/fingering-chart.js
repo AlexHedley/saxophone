@@ -109,13 +109,15 @@
   // ---------------------------------------------------------------------------
   // Main generator
   // ---------------------------------------------------------------------------
-  function generateSVG(keys) {
+  function generateSVG(keys, displayWidth) {
+    var w = displayWidth || SVG_W;
+    var h = displayWidth ? Math.round(SVG_H * displayWidth / SVG_W) : SVG_H;
     var parts = [];
 
     parts.push(
       '<svg xmlns="http://www.w3.org/2000/svg"' +
       ' viewBox="0 0 ' + SVG_W + " " + SVG_H + '"' +
-      ' width="' + SVG_W + '" height="' + SVG_H + '"' +
+      ' width="' + w + '" height="' + h + '"' +
       ' role="img" aria-label="Saxophone fingering diagram">'
     );
 
