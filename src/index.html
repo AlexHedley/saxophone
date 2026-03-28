@@ -6,8 +6,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta name="description" content="Saxophone" />
-    <meta name="keywords" content="Saxophone" />
+    <meta name="description" content="Interactive Alto Saxophone Fingering Chart" />
+    <meta name="keywords" content="Saxophone, Fingering Chart, Alto Saxophone, Music" />
     <meta name="author" content="Alex Hedley" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/vendor/bootstrap/bootstrap.min.css" />
@@ -18,34 +18,122 @@
       integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
       crossorigin="anonymous"
     />
-    <!-- <link rel="stylesheet" href="css/jquery-ui.min.css"> -->
-    <link
-      rel="stylesheet"
-      href="css/vendor/jquery-ui/jquery-ui.1.12.1.min.css"
-    />
     <link rel="stylesheet" href="css/styles.css" />
-    <!-- Components -->
-    <!-- <link rel="stylesheet" href="components/#/#.component.css" /> -->
 
     <link rel="shortcut icon" href="favicon.ico" />
 
-    <!-- Fonts -->
-    <!-- <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'> -->
-
-    <title>Saxophone</title>
+    <title>Saxophone Fingering Chart</title>
   </head>
   <body ng-app="myApp">
-    <main role="main" class="container" ng-controller="myController">
-      <header>
-        <h1>Saxophone</h1>
-      </header>
-      <div class="vexbox">
-        <div id="output"></div>
-      </div>
-      <!-- <div boo-directive></div> -->
-    </main>
+    <main role="main" class="container py-4" ng-controller="myController">
 
-    <br />
+      <header class="mb-3">
+        <h1>Saxophone Fingering Chart</h1>
+        <p class="text-muted mb-0">Alto Saxophone &mdash; standard written-pitch fingerings</p>
+      </header>
+
+      <!-- ── Note selector ──────────────────────────────────────── -->
+      <section class="mb-4" aria-label="Note selector">
+        <div class="register-label">Register 1 (no octave key)</div>
+        <div class="note-selector" role="group" aria-label="Register 1 notes">
+          <button
+            ng-repeat="note in register1"
+            class="note-btn"
+            ng-class="{ active: selectedNote && selectedNote.id === note.id }"
+            ng-click="selectNote(note)"
+            title="{{ note.written }} — concert {{ note.concertPitch }}"
+          >{{ note.written }}</button>
+        </div>
+
+        <div class="register-label mt-2">Register 2 (octave key)</div>
+        <div class="note-selector" role="group" aria-label="Register 2 notes">
+          <button
+            ng-repeat="note in register2"
+            class="note-btn"
+            ng-class="{ active: selectedNote && selectedNote.id === note.id }"
+            ng-click="selectNote(note)"
+            title="{{ note.written }} — concert {{ note.concertPitch }}"
+          >{{ note.written }}</button>
+        </div>
+      </section>
+
+      <!-- ── Main content: diagram + detail ────────────────────── -->
+      <div class="row" ng-if="selectedNote">
+
+        <!-- Fingering diagram -->
+        <div class="col-sm-auto mb-3">
+          <div class="diagram-card">
+            <h6>Fingering Diagram</h6>
+            <div id="fingering-diagram" aria-label="Fingering diagram for {{ selectedNote.written }}"></div>
+            <div class="key-legend mt-2">
+              <span class="legend-dot pressed"></span> Pressed &nbsp;
+              <span class="legend-dot open"></span> Open
+            </div>
+          </div>
+        </div>
+
+        <!-- Note detail + VexFlow notation -->
+        <div class="col mb-3">
+          <div class="detail-card">
+            <div class="note-title">{{ selectedNote.name }}</div>
+            <div class="note-subtitle">Written: {{ selectedNote.written }}</div>
+
+            <dl class="note-meta row">
+              <dt class="col-sm-5">Concert Pitch</dt>
+              <dd class="col-sm-7">{{ selectedNote.concertPitch }}</dd>
+
+              <dt class="col-sm-5">Register</dt>
+              <dd class="col-sm-7">
+                <span ng-if="selectedNote.register === 1">Lower (no octave key)</span>
+                <span ng-if="selectedNote.register === 2">Upper (octave key pressed)</span>
+              </dd>
+
+              <dt class="col-sm-5">Keys pressed</dt>
+              <dd class="col-sm-7">
+                <span ng-if="selectedNote.keys.oct"    class="badge bg-dark me-1">Oct</span>
+                <span ng-if="selectedNote.keys.lh1"    class="badge bg-secondary me-1">LH 1</span>
+                <span ng-if="selectedNote.keys.bis"    class="badge bg-secondary me-1">Bis</span>
+                <span ng-if="selectedNote.keys.lh2"    class="badge bg-secondary me-1">LH 2</span>
+                <span ng-if="selectedNote.keys.lh3"    class="badge bg-secondary me-1">LH 3</span>
+                <span ng-if="selectedNote.keys.gSharp" class="badge bg-secondary me-1">G&#9839;</span>
+                <span ng-if="selectedNote.keys.lhPinky_Eb"  class="badge bg-info text-dark me-1">L.E&#9837;</span>
+                <span ng-if="selectedNote.keys.lhPinky_C"   class="badge bg-info text-dark me-1">L.C</span>
+                <span ng-if="selectedNote.keys.lhPinky_B"   class="badge bg-info text-dark me-1">L.B</span>
+                <span ng-if="selectedNote.keys.lhPinky_Bb"  class="badge bg-info text-dark me-1">L.B&#9837;</span>
+                <span ng-if="selectedNote.keys.rh1"    class="badge bg-secondary me-1">RH 1</span>
+                <span ng-if="selectedNote.keys.rh2"    class="badge bg-secondary me-1">RH 2</span>
+                <span ng-if="selectedNote.keys.rh3"    class="badge bg-secondary me-1">RH 3</span>
+                <span ng-if="selectedNote.keys.rhSide_C"    class="badge bg-info text-dark me-1">R.C&#x2099;</span>
+                <span ng-if="selectedNote.keys.rhPinky_Bb"  class="badge bg-info text-dark me-1">R.B&#9837;</span>
+                <span ng-if="selectedNote.keys.rhPinky_C"   class="badge bg-info text-dark me-1">R.C</span>
+                <span ng-if="selectedNote.keys.rhPinky_Eb"  class="badge bg-info text-dark me-1">R.E&#9837;</span>
+                <span
+                  ng-if="!selectedNote.keys.oct && !selectedNote.keys.lh1 && !selectedNote.keys.bis &&
+                         !selectedNote.keys.lh2 && !selectedNote.keys.lh3 && !selectedNote.keys.gSharp &&
+                         !selectedNote.keys.lhPinky_Eb && !selectedNote.keys.lhPinky_C &&
+                         !selectedNote.keys.lhPinky_B && !selectedNote.keys.lhPinky_Bb &&
+                         !selectedNote.keys.rh1 && !selectedNote.keys.rh2 && !selectedNote.keys.rh3 &&
+                         !selectedNote.keys.rhSide_C && !selectedNote.keys.rhPinky_Bb &&
+                         !selectedNote.keys.rhPinky_C && !selectedNote.keys.rhPinky_Eb"
+                  class="text-muted fst-italic">Open (no keys)</span>
+              </dd>
+            </dl>
+
+            <hr />
+
+            <!-- VexFlow notation -->
+            <div class="register-label mb-2">Staff Notation</div>
+            <div id="notation"></div>
+          </div>
+        </div>
+
+      </div><!-- /.row -->
+
+      <div ng-if="!selectedNote" class="text-muted text-center py-5">
+        Loading fingering data&hellip;
+      </div>
+
+    </main>
 
     <footer class="footer">
       <div class="container">
@@ -62,20 +150,14 @@
           '<script src="js/vendor/jquery/jquery-slim.min.js"><\/script>'
         );
     </script>
-    <script src="js/vendor/jquery/jquery-ui.min.js"></script>
-    <!-- <script src="js/vendor/jquery-ui.1.12.1.min.js"></script> -->
-    <!-- <script src="js/vendor/popper.min.js"></script> -->
     <script src="js/vendor/bootstrap/bootstrap.min.js"></script>
-    <!-- <script src="js/vendor/jquery.pretty-text-diff.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script> -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script> -->
     <script src="js/vendor/angularjs/angular.min.js"></script>
 
     <!-- Vexflow 4.1.0 -->
     <script src="js/vendor/vexflow/vexflow-min.js"></script>
 
+    <!-- Fingering chart -->
+    <script src="js/fingering-chart.js"></script>
     <script src="js/app.js"></script>
-    <!-- Components -->
-    <!-- <script src="components/#/#.component.js"></script> -->
   </body>
 </html>

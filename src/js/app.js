@@ -1,37 +1,103 @@
 var myApp = angular.module("myApp", []);
-myApp.controller("myController", function ($scope, $http, $q, $filter) {
+
+myApp.controller("myController", function ($scope, $http, $timeout) {
+  $scope.notes = [];
+  $scope.selectedNote = null;
+  $scope.register1 = [];
+  $scope.register2 = [];
+
   $scope.init = function () {
-    sampleMusic();
+    $http.get("data/fingerings.json").then(
+      function (response) {
+        $scope.notes = response.data.notes;
+        $scope.register1 = $scope.notes.filter(function (n) { return n.register === 1; });
+        $scope.register2 = $scope.notes.filter(function (n) { return n.register === 2; });
+        // Default: select the first note
+        if ($scope.notes.length > 0) {
+          $scope.selectNote($scope.notes[0]);
+        }
+      },
+      function () {
+        console.error("Could not load data/fingerings.json");
+      }
+    );
   };
 
-  getData = () => {
-    var file = "data/scores.json";
-    $http.get(file).then(function (response) {});
+  $scope.selectNote = function (note) {
+    $scope.selectedNote = note;
+    // Defer DOM updates until after AngularJS finishes its digest/render cycle
+    $timeout(function () {
+      // Render fingering diagram (inline SVG)
+      var diagramEl = document.getElementById("fingering-diagram");
+      if (diagramEl && window.FingeringChart) {
+        diagramEl.innerHTML = FingeringChart.generateSVG(note.keys);
+      }
+      // Render VexFlow notation
+      renderNotation(note.vexNote);
+    }, 0);
   };
 
   $scope.init();
 });
 
-function sampleMusic() {
-  const { Factory } = Vex.Flow;
-  // Create a VexFlow renderer attached to the DIV element with id="output".
-  const vf = new Factory({ renderer: { elementId: "output" } });
-  const score = vf.EasyScore();
-  const system = vf.System();
-  // Create a 4/4 treble stave and add two parallel voices.
-  system
-    .addStave({
-      voices: [
-        // Top voice has 4 quarter notes with stems up.
-        score.voice(score.notes("C#5/q, B4, A4, G#4", { stem: "up" })),
-        // Bottom voice has two half notes, with stems down.
-        score.voice(score.notes("C#4/h, C#4", { stem: "down" })),
-      ],
-    })
-    .addClef("treble")
-    .addTimeSignature("4/4");
-  // Draw it!
-  vf.draw();
+// ---------------------------------------------------------------------------
+// VexFlow notation renderer (VexFlow 3.x)
+// ---------------------------------------------------------------------------
+function renderNotation(vexNote) {
+  var container = document.getElementById("notation");
+  if (!container) { return; }
+  // Clear previous render
+  container.innerHTML = "";
+
+  try {
+    var VF = Vex.Flow;
+    var renderer = new VF.Renderer(container, VF.Renderer.Backends.SVG);
+    renderer.resize(320, 140);
+    var context = renderer.getContext();
+
+    var stave = new VF.Stave(10, 20, 280);
+    stave.addClef("treble");
+    stave.setContext(context).draw();
+
+    // Parse the vexNote string (e.g. "Bb3/w") into a StaveNote
+    var parts = vexNote.split("/");
+    var noteStr = parts[0];   // e.g. "Bb3"
+    var dur    = parts[1] || "w";
+
+    // Extract pitch letter, accidental, and octave
+    var match = noteStr.match(/^([A-Ga-g])(#{1,2}|b{1,2}|n)?(\d)$/);
+    if (!match) { return; }
+
+    var keys = [noteStr.toLowerCase().replace("b", "b").replace("#", "#")];
+    // VexFlow key format: "bb/3", "c#/4", "g/4" etc.
+    var pitch  = match[1].toLowerCase();
+    var acc    = match[2] || "";
+    var octave = match[3];
+    var vfKey  = pitch + acc + "/" + octave;
+
+    var staveNote = new VF.StaveNote({
+      clef: "treble",
+      keys: [vfKey],
+      duration: dur
+    });
+
+    // Add accidental annotation if needed
+    if (acc === "b" || acc === "bb") {
+      staveNote.addAccidental(0, new VF.Accidental("b"));
+    } else if (acc === "#" || acc === "##") {
+      staveNote.addAccidental(0, new VF.Accidental("#"));
+    }
+
+    var voice = new VF.Voice({ num_beats: 4, beat_value: 4 });
+    voice.addTickables([staveNote]);
+
+    var formatter = new VF.Formatter();
+    formatter.joinVoices([voice]).format([voice], 240);
+    voice.draw(context, stave);
+
+  } catch (e) {
+    console.error("VexFlow render error:", e);
+  }
 }
 
 // FILTERS
@@ -39,30 +105,4 @@ myApp.filter("toDate", function () {
   return function (items) {
     return new Date(items);
   };
-});
-
-// DIRECTIVES
-myApp.directive("booDirective", function () {
-  return {
-    link: postLink,
-  };
-  function postLink(scope, elem, attrs) {
-    var len = window.innerWidth / 2;
-    var VF = Vex.Flow;
-    var div = elem[0];
-    var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
-    // Size our svg:
-    renderer.resize(window.innerWidth / 2, 200);
-
-    // And get a drawing context:
-    var context = renderer.getContext();
-    // Create a stave at position 0, 40 of width of 'len' on the canvas.
-    var stave = new VF.Stave(0, 40, len);
-
-    // Add a clef and time signature.
-    stave.addClef("treble").addTimeSignature("4/4");
-
-    // Connect it to the rendering context and draw!
-    stave.setContext(context).draw();
-  }
 });
