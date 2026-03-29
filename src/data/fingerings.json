@@ -1,0 +1,400 @@
+{
+  "instrument": "Alto Saxophone",
+  "description": "Standard fingering chart for Alto Saxophone (written pitches; Eb transposing instrument — written C sounds as concert Eb).",
+  "keyDescriptions": {
+    "oct":         "Register / Octave key (left thumb)",
+    "lh1":         "Left hand 1st finger (index)",
+    "bis":         "Bis key (small key between LH1 and LH2)",
+    "lh2":         "Left hand 2nd finger (middle)",
+    "lh3":         "Left hand 3rd finger (ring)",
+    "gSharp":      "G# / Ab key (left side)",
+    "lhPinky_Eb":  "Left pinky — Eb / D#",
+    "lhPinky_C":   "Left pinky — Low C",
+    "lhPinky_B":   "Left pinky — B natural",
+    "lhPinky_Bb":  "Left pinky — Low Bb",
+    "rh1":         "Right hand 1st finger (index)",
+    "rh2":         "Right hand 2nd finger (middle)",
+    "rh3":         "Right hand 3rd finger (ring)",
+    "rhSide_C":    "Right side C key (fork/side key)",
+    "rhPinky_Bb":  "Right pinky — Low Bb",
+    "rhPinky_C":   "Right pinky — Low C",
+    "rhPinky_Eb":  "Right pinky — Eb / D#"
+  },
+  "notes": [
+    {
+      "id": "Bb3",
+      "name": "B\u266d / A\u266f",
+      "written": "Bb3",
+      "concertPitch": "D\u266d3",
+      "vexNote": "Bb3/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": true,
+        "rh1": true, "rh2": true, "rh3": true,
+        "rhSide_C": false, "rhPinky_Bb": true, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "B3",
+      "name": "B",
+      "written": "B3",
+      "concertPitch": "D3",
+      "vexNote": "B3/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": true, "lhPinky_Bb": false,
+        "rh1": true, "rh2": true, "rh3": true,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "C4",
+      "name": "C",
+      "written": "C4",
+      "concertPitch": "E\u266d3",
+      "vexNote": "C4/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": true, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": true, "rh2": true, "rh3": true,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "Cs4",
+      "name": "C\u266f / D\u266d",
+      "written": "C#4",
+      "concertPitch": "E3",
+      "vexNote": "C#4/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": true,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": true, "rh2": true, "rh3": true,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "D4",
+      "name": "D",
+      "written": "D4",
+      "concertPitch": "F3",
+      "vexNote": "D4/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": true, "rh2": true, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "Eb4",
+      "name": "E\u266d / D\u266f",
+      "written": "Eb4",
+      "concertPitch": "G\u266d3",
+      "vexNote": "Eb4/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": true, "rh2": true, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": true
+      }
+    },
+    {
+      "id": "E4",
+      "name": "E",
+      "written": "E4",
+      "concertPitch": "G3",
+      "vexNote": "E4/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": true, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "F4",
+      "name": "F",
+      "written": "F4",
+      "concertPitch": "A\u266d3",
+      "vexNote": "F4/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "Fs4",
+      "name": "F\u266f / G\u266d",
+      "written": "F#4",
+      "concertPitch": "A3",
+      "vexNote": "F#4/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": true, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "G4",
+      "name": "G",
+      "written": "G4",
+      "concertPitch": "B\u266d3",
+      "vexNote": "G4/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": false, "lh2": true, "lh3": false,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "Gs4",
+      "name": "G\u266f / A\u266d",
+      "written": "G#4",
+      "concertPitch": "B3",
+      "vexNote": "G#4/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": false, "lh2": true, "lh3": false,
+        "gSharp": true,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "A4",
+      "name": "A",
+      "written": "A4",
+      "concertPitch": "C4",
+      "vexNote": "A4/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": false, "lh2": false, "lh3": false,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "Bb4",
+      "name": "B\u266d / A\u266f",
+      "written": "Bb4",
+      "concertPitch": "D\u266d4",
+      "vexNote": "Bb4/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": true, "lh2": false, "lh3": false,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "B4",
+      "name": "B",
+      "written": "B4",
+      "concertPitch": "D4",
+      "vexNote": "B4/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": true, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "C5",
+      "name": "C",
+      "written": "C5",
+      "concertPitch": "E\u266d4",
+      "vexNote": "C5/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": false, "bis": false, "lh2": false, "lh3": false,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "Cs5",
+      "name": "C\u266f / D\u266d",
+      "written": "C#5",
+      "concertPitch": "E4",
+      "vexNote": "C#5/w",
+      "register": 1,
+      "keys": {
+        "oct": false, "lh1": false, "bis": false, "lh2": false, "lh3": false,
+        "gSharp": true,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "D5",
+      "name": "D",
+      "written": "D5",
+      "concertPitch": "F4",
+      "vexNote": "D5/w",
+      "register": 2,
+      "keys": {
+        "oct": true, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": true, "rh2": true, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "Eb5",
+      "name": "E\u266d / D\u266f",
+      "written": "Eb5",
+      "concertPitch": "G\u266d4",
+      "vexNote": "Eb5/w",
+      "register": 2,
+      "keys": {
+        "oct": true, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": true, "rh2": true, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": true
+      }
+    },
+    {
+      "id": "E5",
+      "name": "E",
+      "written": "E5",
+      "concertPitch": "G4",
+      "vexNote": "E5/w",
+      "register": 2,
+      "keys": {
+        "oct": true, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": true, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "F5",
+      "name": "F",
+      "written": "F5",
+      "concertPitch": "A\u266d4",
+      "vexNote": "F5/w",
+      "register": 2,
+      "keys": {
+        "oct": true, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "Fs5",
+      "name": "F\u266f / G\u266d",
+      "written": "F#5",
+      "concertPitch": "A4",
+      "vexNote": "F#5/w",
+      "register": 2,
+      "keys": {
+        "oct": true, "lh1": true, "bis": false, "lh2": true, "lh3": true,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": true, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "G5",
+      "name": "G",
+      "written": "G5",
+      "concertPitch": "B\u266d4",
+      "vexNote": "G5/w",
+      "register": 2,
+      "keys": {
+        "oct": true, "lh1": true, "bis": false, "lh2": true, "lh3": false,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "Gs5",
+      "name": "G\u266f / A\u266d",
+      "written": "G#5",
+      "concertPitch": "B4",
+      "vexNote": "G#5/w",
+      "register": 2,
+      "keys": {
+        "oct": true, "lh1": true, "bis": false, "lh2": true, "lh3": false,
+        "gSharp": true,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "A5",
+      "name": "A",
+      "written": "A5",
+      "concertPitch": "C5",
+      "vexNote": "A5/w",
+      "register": 2,
+      "keys": {
+        "oct": true, "lh1": true, "bis": false, "lh2": false, "lh3": false,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    },
+    {
+      "id": "Bb5",
+      "name": "B\u266d / A\u266f",
+      "written": "Bb5",
+      "concertPitch": "D\u266d5",
+      "vexNote": "Bb5/w",
+      "register": 2,
+      "keys": {
+        "oct": true, "lh1": true, "bis": true, "lh2": false, "lh3": false,
+        "gSharp": false,
+        "lhPinky_Eb": false, "lhPinky_C": false, "lhPinky_B": false, "lhPinky_Bb": false,
+        "rh1": false, "rh2": false, "rh3": false,
+        "rhSide_C": false, "rhPinky_Bb": false, "rhPinky_C": false, "rhPinky_Eb": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Alto Saxophone Complete Fingering Reference — all notes with stave and diagram" />
+    <meta name="keywords" content="Saxophone, Fingering Chart, Alto Saxophone, Notes, Music" />
+    <meta name="author" content="Alex Hedley" />
+    <link rel="stylesheet" href="css/vendor/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/vendor/bootstrap/sticky-footer.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>Alto Saxophone Notes</title>
+    <style>
+      /* ── Notes grid ──────────────────────────────────────── */
+      .notes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: 16px;
+      }
+
+      /* ── Individual note card ────────────────────────────── */
+      .note-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.09);
+        padding: 14px 12px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      /* 1. Letter */
+      .card-letter {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1a252f;
+        line-height: 1.1;
+      }
+
+      .card-written {
+        font-size: 0.72rem;
+        color: #6c757d;
+        margin-bottom: 2px;
+      }
+
+      .card-concert {
+        font-size: 0.72rem;
+        color: #6c757d;
+        margin-bottom: 8px;
+      }
+
+      /* 2. Stave */
+      .card-stave {
+        width: 100%;
+        min-height: 78px;
+        overflow: hidden;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .card-stave svg {
+        display: block;
+        max-width: 100%;
+      }
+
+      /* Divider between stave and fingering */
+      .card-divider {
+        width: 80%;
+        border: none;
+        border-top: 1px solid #e9ecef;
+        margin: 4px 0 10px;
+      }
+
+      /* 3. Fingering */
+      .card-fingering svg {
+        display: block;
+        max-width: 100%;
+      }
+
+      /* Register header */
+      .register-section {
+        margin-bottom: 10px;
+      }
+
+      /* Key legend inside each card */
+      .card-legend {
+        font-size: 0.65rem;
+        color: #6c757d;
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+      }
+
+      .legend-dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1.5px solid #2c3e50;
+        vertical-align: middle;
+        margin-right: 3px;
+      }
+
+      .legend-dot.pressed { background: #1a252f; }
+      .legend-dot.open    { background: #ffffff; }
+
+      /* Octave badge */
+      .oct-badge {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 600;
+        background: #1a252f;
+        color: #fff;
+        border-radius: 20px;
+        padding: 1px 7px;
+        margin-bottom: 6px;
+        letter-spacing: 0.04em;
+      }
+
+      @media (max-width: 575px) {
+        .notes-grid {
+          grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+          gap: 10px;
+        }
+        .card-letter { font-size: 1.6rem; }
+      }
+
+      @media print {
+        nav, footer { display: none !important; }
+        .notes-grid { gap: 8px; }
+        .note-card  { box-shadow: none; border: 1px solid #dee2e6; page-break-inside: avoid; }
+      }
+    </style>
+  </head>
+
+  <body ng-app="notesApp">
+    <!-- ── Navbar ───────────────────────────────────────────── -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container">
+        <span class="navbar-brand">🎷 Alto Saxophone</span>
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link text-white" href="index.html">Interactive Chart</a>
+          <a class="nav-link text-white" href="sax-reference.html">Reference</a>
+          <a class="nav-link text-white active" href="notes.html">All Notes</a>
+        </div>
+      </div>
+    </nav>
+
+    <main role="main" class="container py-4" ng-controller="notesController">
+
+      <header class="mb-4">
+        <h1>Alto Saxophone — All Notes</h1>
+        <p class="text-muted mb-0">
+          Written pitches (Bb3–Bb5). Each card shows the note letter,
+          treble-clef staff notation, and fingering diagram.
+          Alto sax sounds a major 6th lower (concert pitch shown below each note name).
+        </p>
+      </header>
+
+      <!-- Loading -->
+      <div ng-if="notes.length === 0" class="text-muted text-center py-5">
+        Loading fingering data&hellip;
+      </div>
+
+      <!-- ── Register 1 ──────────────────────────────────────── -->
+      <div ng-if="notes.length > 0">
+
+        <div class="register-section">
+          <div class="register-label mb-3">Register 1 &mdash; Lower Range (no octave key)</div>
+          <div class="notes-grid">
+            <div class="note-card" ng-repeat="note in register1">
+              <!-- 1. Letter -->
+              <div class="card-letter">{{note.name}}</div>
+              <div class="card-written">Written: <strong>{{note.written}}</strong></div>
+              <div class="card-concert">Concert: {{note.concertPitch}}</div>
+
+              <!-- 2. VexFlow stave -->
+              <div class="card-stave" id="stave-{{note.id}}"></div>
+
+              <hr class="card-divider" />
+
+              <!-- 3. Fingering diagram -->
+              <div class="card-fingering" ng-bind-html="note.fingeringSvg"></div>
+
+              <!-- legend -->
+              <div class="card-legend">
+                <span><span class="legend-dot pressed"></span>Pressed</span>
+                <span><span class="legend-dot open"></span>Open</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Register 2 ───────────────────────────────────── -->
+        <div class="register-section mt-5">
+          <div class="register-label mb-3">Register 2 &mdash; Upper Range (octave key pressed)</div>
+          <div class="notes-grid">
+            <div class="note-card" ng-repeat="note in register2">
+              <!-- 1. Letter -->
+              <div class="oct-badge">Octave key</div>
+              <div class="card-letter">{{note.name}}</div>
+              <div class="card-written">Written: <strong>{{note.written}}</strong></div>
+              <div class="card-concert">Concert: {{note.concertPitch}}</div>
+
+              <!-- 2. VexFlow stave -->
+              <div class="card-stave" id="stave-{{note.id}}"></div>
+
+              <hr class="card-divider" />
+
+              <!-- 3. Fingering diagram -->
+              <div class="card-fingering" ng-bind-html="note.fingeringSvg"></div>
+
+              <!-- legend -->
+              <div class="card-legend">
+                <span><span class="legend-dot pressed"></span>Pressed</span>
+                <span><span class="legend-dot open"></span>Open</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- ng-if notes.length -->
+
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">
+          <a href="https://www.alexhedley.com/" target="_blank">Alex Hedley</a>.
+        </span>
+      </div>
+    </footer>
+
+    <script src="js/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script>
+      window.jQuery ||
+        document.write('<script src="js/vendor/jquery/jquery-slim.min.js"><\/script>');
+    </script>
+    <script src="js/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="js/vendor/angularjs/angular.min.js"></script>
+    <script src="js/vendor/vexflow/vexflow-min.js"></script>
+    <script src="js/fingering-chart.js"></script>
+
+    <script>
+      /* ================================================================
+         Notes page — AngularJS app
+         ================================================================ */
+      var notesApp = angular.module("notesApp", []);
+
+      notesApp.controller("notesController", function ($scope, $http, $sce, $timeout) {
+        $scope.notes     = [];
+        $scope.register1 = [];
+        $scope.register2 = [];
+
+        $http.get("data/fingerings.json").then(
+          function (response) {
+            var notes = response.data.notes;
+
+            // Pre-compute fingering SVG for each note (130 px wide)
+            notes.forEach(function (note) {
+              note.fingeringSvg = $sce.trustAsHtml(
+                FingeringChart.generateSVG(note.keys, 130)
+              );
+            });
+
+            $scope.notes     = notes;
+            $scope.register1 = notes.filter(function (n) { return n.register === 1; });
+            $scope.register2 = notes.filter(function (n) { return n.register === 2; });
+
+            // Render staves after AngularJS has stamped out the DOM
+            $timeout(function () {
+              notes.forEach(renderStave);
+            }, 0);
+          },
+          function () {
+            console.error("Could not load data/fingerings.json");
+          }
+        );
+      });
+
+      /* ================================================================
+         VexFlow stave renderer — one per note card
+         ================================================================ */
+      function renderStave(note) {
+        var container = document.getElementById("stave-" + note.id);
+        if (!container) { return; }
+        container.innerHTML = "";
+
+        try {
+          var VF = Vex.Flow;
+          var renderer = new VF.Renderer(container, VF.Renderer.Backends.SVG);
+          renderer.resize(190, 80);
+          var context = renderer.getContext();
+
+          var stave = new VF.Stave(5, 6, 172);
+          stave.addClef("treble");
+          stave.setContext(context).draw();
+
+          var parts   = note.vexNote.split("/");
+          var noteStr = parts[0];
+          var dur     = parts[1] || "w";
+
+          var match = noteStr.match(/^([A-Ga-g])(#{1,2}|b{1,2}|n)?(\d)$/);
+          if (!match) { return; }
+
+          var pitch  = match[1].toLowerCase();
+          var acc    = match[2] || "";
+          var octave = match[3];
+          var vfKey  = pitch + acc + "/" + octave;
+
+          var staveNote = new VF.StaveNote({
+            clef: "treble",
+            keys: [vfKey],
+            duration: dur
+          });
+
+          if (acc === "b" || acc === "bb") {
+            staveNote.addAccidental(0, new VF.Accidental("b"));
+          } else if (acc === "#" || acc === "##") {
+            staveNote.addAccidental(0, new VF.Accidental("#"));
+          }
+
+          var voice = new VF.Voice({ num_beats: 4, beat_value: 4 });
+          voice.addTickables([staveNote]);
+          new VF.Formatter().joinVoices([voice]).format([voice], 130);
+          voice.draw(context, stave);
+
+        } catch (e) {
+          console.error("VexFlow stave error for", note.id, e);
+        }
+      }
+    </script>
+  </body>
+</html>

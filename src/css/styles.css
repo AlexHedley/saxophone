@@ -1,0 +1,168 @@
+/* ============================================================
+   Saxophone Fingering Chart — custom styles
+   ============================================================ */
+
+/* ── Page layout ────────────────────────────────────────────── */
+body {
+  background-color: #f0f4f8;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a252f;
+}
+
+/* ── Note selector bar ──────────────────────────────────────── */
+.register-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6c757d;
+  margin-bottom: 4px;
+}
+
+.note-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.note-btn {
+  display: inline-block;
+  padding: 4px 10px;
+  border: 2px solid #2c3e50;
+  border-radius: 20px;
+  background: #ffffff;
+  color: #2c3e50;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.note-btn:hover {
+  background: #dce8f0;
+}
+
+.note-btn.active {
+  background: #1a252f;
+  color: #ffffff;
+  border-color: #1a252f;
+  transform: scale(1.08);
+}
+
+/* ── Detail panel ───────────────────────────────────────────── */
+.detail-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px 24px;
+  height: 100%;
+}
+
+.note-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #1a252f;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.note-subtitle {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 16px;
+}
+
+.note-meta {
+  margin-bottom: 16px;
+}
+
+.note-meta dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6c757d;
+  font-weight: 600;
+}
+
+.note-meta dd {
+  font-size: 1rem;
+  color: #1a252f;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* ── VexFlow notation container ─────────────────────────────── */
+#notation {
+  overflow-x: auto;
+  min-height: 120px;
+}
+
+#notation svg {
+  display: block;
+}
+
+/* ── Fingering diagram card ──────────────────────────────────── */
+.diagram-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  text-align: center;
+}
+
+.diagram-card h6 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6c757d;
+  margin-bottom: 12px;
+}
+
+#fingering-diagram svg {
+  display: inline-block;
+  max-width: 100%;
+}
+
+/* ── Key legend ─────────────────────────────────────────────── */
+.key-legend {
+  font-size: 0.78rem;
+  color: #6c757d;
+  margin-top: 12px;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #2c3e50;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.legend-dot.pressed {
+  background: #1a252f;
+}
+
+.legend-dot.open {
+  background: #ffffff;
+}
+
+/* ── Responsive tweaks ──────────────────────────────────────── */
+@media (max-width: 575px) {
+  .note-btn {
+    font-size: 0.76rem;
+    padding: 3px 8px;
+  }
+  .note-title {
+    font-size: 1.8rem;
+  }
+}
